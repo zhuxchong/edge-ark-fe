@@ -1,2 +1,2 @@
-"fixture_mid","season","competition_name","fixture_datetime","fixture_round","home_team","away_team"
-luke,"2022",Super Rugby Pacific,2022-02-18 08:45:00.000,"1",luke1,luke2
+"season","competition_name","fixture_datetime","fixture_round","home_team","away_team"
+"2022",Super Rugby Pacific,2022-02-18 08:45:00.000,"1",luke1,luke2

@@ -3,14 +3,15 @@
 
 import { useState } from "react";
 import { post } from "@/lib/axios";
-
+import { get } from "lodash";
 export default function UploadPage() {
   const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
 
   const handleFileChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
+    setErr("");
     const validTypes = [
       "text/csv",
       // "application/vnd.ms-excel",
@@ -32,7 +33,8 @@ export default function UploadPage() {
       alert("Upload successful");
     } catch (err) {
       console.error(err);
-      alert("Upload failed");
+      setErr(get(err, "errMsg"));
+      //alert("Upload failed");
     } finally {
       setLoading(false);
       e.target.value = "";
@@ -56,6 +58,7 @@ export default function UploadPage() {
         `}
       />
       {loading && <p className="mt-2 text-blue-600">Uploading…</p>}
+      {err && <p className="mt-2 text-red-600">{err}</p>}
     </div>
   );
 }

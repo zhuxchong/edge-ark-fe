@@ -22,16 +22,15 @@ instance.interceptors.response.use(
     const { data = {}, status, config } = error.response;
     const { customHandleError } = config;
 
-    const { errorDesc, errCode } = data || {
-      errorDesc: "",
+    const { error: err, errCode } = data || {
+      error: "",
       errCode: "",
     };
-    console.log("errCode", errCode, data, status);
-
+    console.log("err", err);
     const returnData = {
       code: status || "no code",
-      errMsg: errorDesc || "no code",
-      errorCode: errCode || "no errorCode",
+      errMsg: err || "no code",
+      errorCode: errCode,
       __requestRejected: true,
       entireErrorResponse: JSON.stringify(error.response || {}),
       entireError: JSON.stringify(error || {}),
