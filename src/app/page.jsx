@@ -13,11 +13,11 @@ export default function UploadPage() {
 
     const validTypes = [
       "text/csv",
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      // "application/vnd.ms-excel",
+      // "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     ];
     if (!validTypes.includes(file.type)) {
-      alert("Please upload a CSV or Excel file.");
+      alert("Please upload a CSV file.");
       e.target.value = "";
       return;
     }
@@ -41,10 +41,10 @@ export default function UploadPage() {
 
   return (
     <div className="max-w-md mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Upload CSV or Excel</h2>
+      <h2 className="text-xl font-semibold mb-4">Upload CSV</h2>
       <input
         type="file"
-        accept=".csv, .xls, .xlsx"
+        accept=".csv"
         onChange={handleFileChange}
         disabled={loading}
         className={`
